@@ -11,16 +11,27 @@ namespace BookStore.Pages
 {
     public partial class Products : System.Web.UI.Page
     {
-        private IRepository repository = new MemoryBookRepository();
-        private int pageSize = 7;
+        private IRepository repository = MemoryBookRepository.Instance;
+        private int pageSize = 5;
 
 
         protected uint CurrentPage
         {
-            get => uint.TryParse(Request.QueryString["page"], out uint page) ? page : 1;
+            get
+            {
+                string reqValue = (string)RouteData.Values["page"] ??
+                    Request.QueryString["page"];
+                return reqValue != null && uint.TryParse(reqValue, out uint page) ? page : 1;                 
+            }
         }
 
-
+        protected uint MaxPage
+        {
+            get
+            {
+                return (uint)Math.Ceiling((decimal)repository.Books.Count() / pageSize);
+            }
+        }
 
         protected IEnumerable<Book> GetBooks()
         {

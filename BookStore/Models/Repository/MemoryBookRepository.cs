@@ -7,12 +7,20 @@ namespace BookStore.Models.Repository
 {
     public class MemoryBookRepository : IRepository
     {
+        public static IRepository Instance
+        {
+            get => instance ?? new MemoryBookRepository();
+        }
         public IEnumerable<Book> Books { get; private set; }
-        private Random rnd = new Random();
 
-        public MemoryBookRepository()
+        private Random rnd = new Random();
+        private static IRepository instance;
+
+
+        private MemoryBookRepository()
         {            
             GenerateBooks(rnd.Next(50, 100));
+            instance = this;
         }
 
         void GenerateBooks(int count)

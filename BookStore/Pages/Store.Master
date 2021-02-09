@@ -1,0 +1,25 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="BookStore.Pages.Store" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Книжный магазин</title>
+    <link href="/Content/Styles.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="header">
+            <div class="title">Bookstore - книги на любой вкус</div>
+        </div>
+
+        <div id="categories">
+            
+        </div>
+
+        <div>            
+            <asp:ContentPlaceHolder ID="bodyContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>

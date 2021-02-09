@@ -1,26 +1,30 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="BookStore.Pages.Products" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="BookStore.Pages.Products"
+    MasterPageFile="~/Pages/Store.Master" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Книжный магазин</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <%
-                foreach (BookStore.Models.Book book in GetBooks())
-                {
-                    Response.Write(
-                        $"<div class='item'>" +
-                            $"<h3>{book.Title}</h3>{book.Author}" +
-                            $"<h4>{book.Price.ToString("C")}</h4>" +
-                        $"</div>");
-                }
+<asp:Content ContentPlaceHolderID="bodyContent" runat="server">
+    <div id="content">
+        <%
+            foreach (BookStore.Models.Book book in GetBooks())
+            {
+                Response.Write(
+                    $"<div class='item'>" +
+                        $"<h3>{book.Title}</h3>{book.Author}" +
+                        $"<h4>{book.Price.ToString("C")}</h4>" +
+                    $"</div>");
+            }
                 %>
         </div>
-    </form>
-</body>
-</html>
+
+        <div class="pager">
+            <%
+                for (int i = 0; i <= MaxPage; i++)
+                {
+                    var aClass = i == CurrentPage ? "class='selected' " : string.Empty;
+                        Response.Write(
+                            $"<a href='/Pages/Products.aspx?page={i}' " +
+                            $"{aClass} >{i}");
+                }
+            %>
+    </div>
+</asp:Content>
