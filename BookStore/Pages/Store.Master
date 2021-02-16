@@ -1,4 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="BookStore.Pages.Store" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" 
+    Inherits="BookStore.Pages.Store"  %>
+<%@ Register TagPrefix="BS" TagName="CategoryList" 
+    Src="~/Controls/CategoryList.ascx" %>
+
 
 <!DOCTYPE html>
 
@@ -14,7 +18,7 @@
         </div>
 
         <div id="categories">
-            
+            <BS:CategoryList runat="server" />
         </div>
 
         <div>            

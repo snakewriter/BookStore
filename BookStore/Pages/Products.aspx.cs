@@ -11,7 +11,7 @@ namespace BookStore.Pages
 {
     public partial class Products : System.Web.UI.Page
     {
-        private IRepository repository = MemoryBookRepository.Instance;
+        private IRepository repository = Factory.GetResourse<IRepository>();
         private int pageSize = 5;
 
 
@@ -19,9 +19,18 @@ namespace BookStore.Pages
         {
             get
             {
+                uint page = PageFromRequest;
+                return page > MaxPage ? MaxPage : page;
+            }
+        }
+
+        uint PageFromRequest
+        {
+            get
+            {
                 string reqValue = (string)RouteData.Values["page"] ??
                     Request.QueryString["page"];
-                return reqValue != null && uint.TryParse(reqValue, out uint page) ? page : 1;                 
+                return reqValue != null && uint.TryParse(reqValue, out uint page) ? page : 1;
             }
         }
 
@@ -29,7 +38,7 @@ namespace BookStore.Pages
         {
             get
             {
-                return (uint)Math.Ceiling((decimal)repository.Books.Count() / pageSize);
+                return (uint)Math.Ceiling((decimal)GetBooksByCategory().Count() / pageSize);
             }
         }
 
@@ -39,6 +48,16 @@ namespace BookStore.Pages
                 .OrderBy(book => book.ID)
                 .Skip(((int)CurrentPage - 1) * pageSize)
                 .Take(pageSize);
+        }
+
+        private IEnumerable<Book> GetBooksByCategory()
+        {
+            var books = repository.Books;
+            string currentCat = (string)RouteData.Values["category"] ??
+                Request.QueryString["category"];
+            var result = currentCat == null ? books :
+                books.Where(b => b.Category == currentCat);
+            return result;
         }
 
         protected void Page_Load(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products.aspx.cs" Inherits="BookStore.Pages.Products"
     MasterPageFile="~/Pages/Store.Master" %>
+<%@ Import Namespace="System.Web.Routing"  %>
 
 
 <asp:Content ContentPlaceHolderID="bodyContent" runat="server">
@@ -18,12 +19,15 @@
 
         <div class="pager">
             <%
-                for (int i = 0; i <= MaxPage; i++)
+                for (int i = 1; i <= MaxPage; i++)
                 {
+                    var path = RouteTable.Routes.GetVirtualPath(
+                        null, null, new RouteValueDictionary()
+                        { { "page", i } }).VirtualPath;
+
                     var aClass = i == CurrentPage ? "class='selected' " : string.Empty;
-                        Response.Write(
-                            $"<a href='/Pages/Products.aspx?page={i}' " +
-                            $"{aClass} >{i}");
+                    Response.Write(
+                        $"<a href='{path}' {aClass} >{i}");
                 }
             %>
     </div>

@@ -10,6 +10,10 @@ namespace BookStore.App_Start
     {
         public static void RegisterRoutes(RouteCollection routes)
         {
+            routes.MapPageRoute(null, "list/{category}/{page}",
+                "~/Pages/Products.aspx");
+
+            routes.MapPageRoute(null, "list/{page}", "~/Pages/Products.aspx");
             routes.MapPageRoute(null, string.Empty, "~/Pages/Products.aspx");
             routes.MapPageRoute(null, "list", "~/Pages/Products.aspx");
         }
