@@ -10,6 +10,7 @@
 <head runat="server">
     <title>Книжный магазин</title>
     <link href="/Content/Styles.css" rel="stylesheet" />
+    <link href="../Content/cart-styles.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">

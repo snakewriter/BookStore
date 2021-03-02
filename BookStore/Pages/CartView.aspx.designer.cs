@@ -10,24 +10,15 @@
 namespace BookStore.Pages {
     
     
-    public partial class Store {
+    public partial class CartView {
         
         /// <summary>
-        /// form1 элемент управления.
+        /// Repeater1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// bodyContent элемент управления.
-        /// </summary>
-        /// <remarks>
-        /// Автоматически создаваемое поле.
-        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder bodyContent;
+        protected global::System.Web.UI.WebControls.Repeater Repeater1;
     }
 }

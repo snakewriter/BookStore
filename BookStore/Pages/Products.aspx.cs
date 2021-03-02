@@ -1,9 +1,11 @@
 ﻿using BookStore.Models;
 using BookStore.Models.Repository;
+using BookStore.Pages.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Routing;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -62,7 +64,24 @@ namespace BookStore.Pages
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (IsPostBack) TryAddItemToCart();
+        }
 
+        private void TryAddItemToCart()
+        {
+            if (!int.TryParse(Request.Form["buy"], out int bookID)) return;
+
+            var bookToAdd = repository.Books
+                .Where(book => book.ID == bookID)
+                .FirstOrDefault();
+
+            if (bookToAdd == null) return;
+
+            SessionHelper.GetCart(Session).AddItem(bookToAdd, 1);
+            SessionHelper.Set(Session, SessionKey.ReturnUrl, Request.RawUrl);
+            var redirectPath = RouteTable.Routes
+                .GetVirtualPath(null, "cart", null).VirtualPath;
+            Response.Redirect(redirectPath);
         }
     }
 }
