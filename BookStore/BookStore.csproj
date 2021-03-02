@@ -93,9 +93,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Book.cs" />
+    <Compile Include="Models\Cart.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Factory.cs" />
     <Compile Include="Models\Repository\IRepository.cs" />
     <Compile Include="Models\Repository\TestBookRepository.cs" />
+    <Compile Include="Pages\Helpers\SessionHelper.cs" />
     <Compile Include="Pages\Products.aspx.cs">
       <DependentUpon>Products.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -124,7 +127,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\Admin\" />
-    <Folder Include="Pages\Helpers\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <PropertyGroup>

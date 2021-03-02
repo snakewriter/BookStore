@@ -42,9 +42,9 @@ namespace BookStore.Pages
             }
         }
 
-        protected IEnumerable<Book> GetBooks()
+        public IEnumerable<Book> GetBooks()
         {
-            return repository.Books
+            return GetBooksByCategory()
                 .OrderBy(book => book.ID)
                 .Skip(((int)CurrentPage - 1) * pageSize)
                 .Take(pageSize);
