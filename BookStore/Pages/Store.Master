@@ -1,7 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" 
     Inherits="BookStore.Pages.Store"  %>
-<%@ Register TagPrefix="BS" TagName="CategoryList" 
-    Src="~/Controls/CategoryList.ascx" %>
 
 
 <!DOCTYPE html>
@@ -9,12 +7,16 @@
 <html>
 <head runat="server">
     <title>Книжный магазин</title>
-    <link href="/Content/Styles.css" rel="stylesheet" />
+    <link href="/Content/styles.css" rel="stylesheet" />
+    <link href="../Content/products-styles.css" rel="stylesheet" />    
+    <link href="../Content/categs-styles.css" rel="stylesheet" />
     <link href="../Content/cart-styles.css" rel="stylesheet" />
+    <link href="../Content/checkout-styles.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div id="header">
+            <BS:CartSummary runat="server" />
             <div class="title">Bookstore - книги на любой вкус</div>
         </div>
 

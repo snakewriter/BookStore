@@ -74,15 +74,28 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\Styles.css" />
+    <Content Include="Content\cart-styles.css" />
+    <Content Include="Content\categs-styles.css" />
+    <Content Include="Content\checkout-styles.css" />
+    <Content Include="Content\products-styles.css" />
+    <Content Include="Content\styles.css" />
+    <Content Include="Controls\CartSummary.ascx" />
     <Content Include="Controls\CategoryList.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Pages\CartView.aspx" />
+    <Content Include="Pages\Checkout.aspx" />
     <Content Include="Pages\Products.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controls\CartSummary.ascx.cs">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\CartSummary.ascx.designer.cs">
+      <DependentUpon>CartSummary.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CategoryList.ascx.cs">
       <DependentUpon>CategoryList.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,7 +109,17 @@
     <Compile Include="Models\Book.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\CartItem.cs" />
-    <Compile Include="Models\Factory.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderItem.cs" />
+    <Compile Include="Models\Repository\DataCollection.cs" />
+    <Compile Include="Pages\Checkout.aspx.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Checkout.aspx.designer.cs">
+      <DependentUpon>Checkout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Helpers\Factory.cs" />
     <Compile Include="Models\Repository\IRepository.cs" />
     <Compile Include="Models\Repository\TestBookRepository.cs" />
     <Compile Include="Pages\CartView.aspx.cs">

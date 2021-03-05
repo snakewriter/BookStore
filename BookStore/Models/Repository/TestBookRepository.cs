@@ -11,7 +11,18 @@ namespace BookStore.Models.Repository
         {
             get => instance ?? new TestBookRepository();
         }
-        public IEnumerable<Book> Books { get; private set; }
+        public DataCollection<Book> Books
+        {
+            get;
+            private set;
+        }
+        public DataCollection<Order> Orders
+        {
+            get;
+            private set;
+        } = new DataCollection<Order>();
+
+
 
         private Random rnd = new Random();
         private static IRepository instance;
@@ -31,7 +42,7 @@ namespace BookStore.Models.Repository
         {
             var booksList = new List<Book>();
             for (int i = 0; i < count; i++) GenerateBook(booksList, i);
-            Books = booksList;
+            Books = new DataCollection<Book>(booksList);
         }
 
         void GenerateBook(List<Book> booksList, int index)
@@ -63,8 +74,7 @@ namespace BookStore.Models.Repository
         }
 
         public void SaveChanges()
-        {               
-            throw new NotImplementedException();
+        {   
         }
     }
 }

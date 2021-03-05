@@ -8,7 +8,10 @@ namespace BookStore.Models.Repository
 {
     public interface IRepository
     {
-        IEnumerable<Book> Books { get; }
+        DataCollection<Book> Books { get; }
+
+        DataCollection<Order> Orders { get; }
+
         void SaveChanges();
     }
 }

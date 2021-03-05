@@ -17,13 +17,19 @@
             </thead>
             <tbody>
                 <asp:Repeater ID="Repeater1" ItemType="BookStore.Models.CartItem" 
-                    SelectMethod="GetCartItems" runat="server">
+                    SelectMethod="GetCartItems" runat="server" EnableViewState="false">
                     <ItemTemplate>
                         <tr>
                             <td><%# Item.Quantity %></td>
                             <td><%# Item.Book.Title %></td>
                             <td><%# Item.Book.Price.ToString("C") %></td>
                             <td><%# (Item.Quantity * Item.Book.Price).ToString("C") %></td>
+                            <td>
+                                <button type="submit" class="action-buttons" name="remove"
+                                    value="<%# Item.Book.ID %>">
+                                    Удалить
+                                </button>
+                            </td>
                         </tr>
                     </ItemTemplate>
                 </asp:Repeater>
@@ -37,6 +43,7 @@
         </table>
         <p class="action-buttons">
             <a href="<%= ReturnUrl %>">Продолжить покупки</a>
+            <a href="<%= CheckoutUrl %>">Оформить заказ</a>
         </p>
     </div>
 </asp:Content>

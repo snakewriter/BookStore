@@ -1,1 +1,56 @@
 ﻿
+h2 {
+    margin-top: .3em;
+}
+
+#cart-table {
+    width: 90%;
+}
+
+#cart-table th, td {
+    padding: 7px 0;
+}
+
+#cart-table tfoot td {
+    border-top: 1px dotted gray;
+    font-weight: bold;
+    text-align: right;
+}
+
+#cart-table thead th {
+    text-align: right;
+}
+
+#cart-table thead th:first-child {
+    text-align: left;
+}
+
+#cart-table thead th:nth-child(2) {
+    text-align: left;
+}
+
+#cart-table tbody td {
+    text-align: right;
+}
+
+#cart-table tbody td:first-child {
+    text-align: left;
+}
+
+#cart-table tbody td:nth-child(2) {
+    text-align: left;
+}
+
+p.action-buttons {
+    text-align: center;
+}
+
+.action-buttons a {
+    font: .8em Arial;
+    color: white;
+    margin: .5em;
+    text-decoration: none;
+    padding: .15em 1.5em .2em 1.5em;
+    background-color: #353535;
+    border: 1px solid gray;
+}

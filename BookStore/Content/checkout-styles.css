@@ -1,0 +1,18 @@
+﻿.checkout label {
+    display: inline-block;
+    width: 170px;
+    text-align: left;
+}
+
+.checkout div input {
+    width: 200px;
+    margin: 2px;
+}
+
+.checkout button.checkout-button {
+    float: left;
+}
+
+#errors {
+    color: orangered;
+}
