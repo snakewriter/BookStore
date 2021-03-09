@@ -3,6 +3,19 @@
     margin: 0;
 }
 
+button {
+    background-color: #333;
+    color: white;
+    border: 1px solid black;
+    float: right;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: gray;
+    border: 1px solid gray;
+}
+
 #header .title, .item h3, .item h4, .pager a {
     font: bold 1em "Arial Narrow", "Franclin Gothic Medium", Arial;
 }
@@ -77,18 +90,7 @@
     margin: 0.4em 0 0 0;
 }
 
-.item button {
-    background-color: #333;
-    color: white;
-    border: 1px solid black;
-    float: right;
-    border-radius: 5px;
-}
 
-.item button:hover {
-    background-color: gray;
-    border: 1px solid gray;
-}
 
 
 

@@ -1,1 +1,72 @@
-﻿
+﻿#cart-table {
+    width: 90%;
+}
+
+#cart-table tfoot td {
+    border-top: 1px dotted gray;
+    font-weight: bold;
+}
+
+#cart-table tfoot td:last-child {
+    float: right;
+}
+
+#cart-table thead th {
+    text-align: left;
+}
+
+#cart-table thead th:last-child {
+    text-align: right;
+}
+
+#cart-table thead, th:nth-child(2) {
+    text-align: right;
+}
+
+#cart-table tbody td {
+    text-align: left;
+}
+
+#cart-table tbody td:last-child {
+    text-align: right;
+}
+
+#cart-table tbody, th:nth-child(2) {
+    text-align: right;
+}
+
+#cart-table tfoot, tr td {
+    text-align: right;
+}
+
+p.action-buttons {
+    text-align: center;
+}
+
+.action-buttons a, button.action-buttons {
+    font: .8em Arial;
+    padding: .5em 1.5em;
+    text-decoration: none;
+    color: white;
+    border: 1px solid black;
+    background-color: #353535;
+    border-radius: 5px;
+}
+
+#cart-summary {
+    float: right;
+    margin: .8em;
+    color: silver;
+    background-color: #555;
+    padding: .5em;
+}
+
+#cart-summary a {
+    text-decoration: none;
+    padding: .4em 1em;
+    line-height: 2.1em;
+    margin-left: .5em;
+    background-color: #333;
+    color: white;
+    border: 1px solid black;
+}

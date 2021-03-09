@@ -1,4 +1,5 @@
 ﻿using BookStore.Models;
+using BookStore.Models.Repository;
 using BookStore.Pages.Helpers;
 using System;
 using System.Collections.Generic;
@@ -21,15 +22,27 @@ namespace BookStore.Pages
             get => SessionHelper.GetCart(Session).Total;
         }
 
-
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         public IEnumerable<CartItem> GetCartItems()
         {
             return SessionHelper.GetCart(Session).Items;
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (IsPostBack) RemoveItem();
+        }
+
+        private void RemoveItem()
+        {
+            var repository = Factory.GetResourse<IRepository>();
+            if (!int.TryParse(Request.Form["remove"], out int bookID)) return;
+
+            var bookToRemove = repository.Books
+                .Where(book => book.ID == bookID)
+                .FirstOrDefault();
+
+            if (bookToRemove == null) return;
+            SessionHelper.GetCart(Session).RemoveItem(bookToRemove);
         }
     }
 }
