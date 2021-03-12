@@ -18,32 +18,38 @@
             <h3>Укажите адрес</h3>
 
             <div>
-                <label for="firstName">Имя</label>
-                <input id="firstName" name="firstName" runat="server" />
+                <label for="name">Имя *</label>
+                <SX:ViewInput PropertyName="Name" runat="server" />
             </div>
             <div>
-                <label for="phone">Телефон</label>
-                <input id="phone" name="phone" type="tel" runat="server" />
+                <label for="phone">Телефон *</label>
+                <SX:ViewInput PropertyName="Phone" runat="server" />
             </div>
             <div>
-                <label for="zipCode">Почтовый индекс</label>
-                <input id="zipCode" name="zipCode" type="number" runat="server" />
+                <label for="zipCode">Почтовый индекс *</label>
+                <SX:ViewInput PropertyName="ZipCode" runat="server" />
             </div>
             <div>
-                <label for="city">Город</label>
-                <input id="city" name="city" runat="server" />
+                <label for="city">Город *</label>
+                <SX:ViewInput PropertyName="City" runat="server" />
             </div>
             <div>
-                <label for="street">Улица</label>
-                <input id="street" name="street" runat="server" />
+                <label for="street">Улица *</label>
+                <SX:ViewInput PropertyName="Street" runat="server" />
             </div>
             <div>
-                <label for="house">Дом (корпус и апартамент при наличии)</label>
-                <input id="house" name="house" runat="server" />
+                <label for="house">Дом *</label>
+                <SX:ViewInput PropertyName="House" runat="server" />
+            </div>
+            <div>
+                <label for="apt">Апартамент</label>
+                <input id="apt" name="apt" runat="server" />
             </div>
 
             <p class="action-buttons">
-                <button class="action-buttons checkout-button" type="submit">Отправить заказ</button>
+                <button class="action-buttons checkout-button" type="submit">
+                    Отправить заказ
+                </button>
             </p>
         </div>
 

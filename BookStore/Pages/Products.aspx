@@ -13,8 +13,7 @@
                     <%# Item.Author %>
                     <h4><%# Item.Price.ToString("C") %></h4>
 
-                    <button name="buy" type="submit" 
-                        value="<%# Item.ID %>">
+                    <button name="buy" type="submit" value="<%# Item.ID %>">
                         Купить
                     </button>
                 </div>

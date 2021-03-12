@@ -1,0 +1,31 @@
+﻿body {
+    font-family: Arial;
+}
+
+h1.title {
+    background-color: black;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+
+#nav {
+    text-align: center;
+}
+
+#nav a {
+    font: bold 1.1em "Arial Narrow", "Franclin Gothic Medium", Arial;
+    display: inline-block;
+    color: black;
+    padding: 6px;
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+    border: solid medium black;
+    border-radius: 5px;
+}
+
+#nav a:hover {
+    background: #888;
+    color: white;
+}

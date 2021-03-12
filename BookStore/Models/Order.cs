@@ -10,23 +10,25 @@ namespace BookStore.Models
     {
         public int ID { get; set; }
 
-        [Required]
-        public string FirstName { get; set; }
+        [Required(ErrorMessage = "Введите свое имя")]
+        public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите свой номер телефона")]
         public string Phone { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите свой почтовый индекс")]
         public string ZipCode { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите свой город")]
         public string City { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите свою улицу")]
         public string Street { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Введите свой номер дома")]
         public string House { get; set; }
+
+        public int Apt { get; set; }
 
         public bool IsDispatched { get; set; }
 

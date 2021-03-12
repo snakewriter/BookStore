@@ -18,6 +18,8 @@ namespace BookStore.Pages
             checkout.Visible = true;
             checkoutMessage.Visible = false;
 
+            var phone = Request.Form["Phone"];
+
             if (IsPostBack) PlaceTheOrder();
         }
 

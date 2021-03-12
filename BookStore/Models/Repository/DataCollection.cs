@@ -26,7 +26,7 @@ namespace BookStore.Models.Repository
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator)dataItems;
+            return dataItems.GetEnumerator();
         }
 
         public void Insert(T item)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Web;
 
 namespace BookStore.Models.Repository
@@ -11,17 +12,18 @@ namespace BookStore.Models.Repository
         {
             get => instance ?? new TestBookRepository();
         }
+
         public DataCollection<Book> Books
         {
             get;
             private set;
         }
+
         public DataCollection<Order> Orders
         {
             get;
             private set;
-        } = new DataCollection<Order>();
-
+        }      
 
 
         private Random rnd = new Random();
@@ -35,27 +37,71 @@ namespace BookStore.Models.Repository
         private TestBookRepository()
         {            
             GenerateBooks(rnd.Next(50, 100));
+            GenerateOrders(rnd.Next(5, 10));
             instance = this;
         }
 
         void GenerateBooks(int count)
         {
             var booksList = new List<Book>();
-            for (int i = 0; i < count; i++) GenerateBook(booksList, i);
+            for (int i = 0; i < count; i++)
+            {
+                GenerateItem(booksList, i);
+                booksList[i].Category = categories[rnd.Next(0, categories.Length)];
+            }
             Books = new DataCollection<Book>(booksList);
         }
 
-        void GenerateBook(List<Book> booksList, int index)
+        void GenerateOrders(int count)
         {
-            booksList.Add(new Book()
+            var ordersList = new List<Order>();
+
+            int orderID = 1;
+            for (int i = 0; i < count; i++)
             {
-                ID = index,
-                Title = GenerateString(rnd.Next(10, 25)),
-                Author = GenerateString(rnd.Next(5, 15)),
-                Category = categories[rnd.Next(0, categories.Length)],
-                Price = (float)(rnd.NextDouble() * rnd.Next(100, 10000))
-            });
+                GenerateItem(ordersList, i);
+                ordersList[i].Items = new List<OrderItem>();
+
+                for (int j = 0; j < rnd.Next(1, 4); j++)   
+                {
+                    ordersList[i].Items.Add(new OrderItem()
+                    {
+                        ID = orderID,
+                        BookID = rnd.Next(1, Books.Count()),
+                        Quantity = rnd.Next(1, 5)
+                    });
+                    orderID++;
+                }
+            }
+            Orders = new DataCollection<Order>(ordersList);
         }
+
+        void GenerateItem<T>(List<T> itemsList, int index)
+        {
+            var newItem = Activator.CreateInstance<T>();
+
+            foreach (var propInfo in typeof(T).GetProperties())
+                if (propInfo.PropertyType == typeof(string))
+                    SetProperty(propInfo, newItem, GenerateString(rnd.Next(15, 30)));
+
+                else if (propInfo.Name == "ID")
+                    SetProperty(propInfo, newItem, index);
+
+                else if (propInfo.PropertyType == typeof(int))
+                    SetProperty(propInfo, newItem, rnd.Next(10, 10000));
+
+                else if (propInfo.PropertyType == typeof(float))
+                    SetProperty(propInfo, newItem, (float)rnd.NextDouble() * 1000);
+
+            itemsList.Add(newItem);
+
+        }
+
+        void SetProperty<T>(PropertyInfo propertyInfo, T item, object value)
+        {
+            propertyInfo.SetValue(item, value);
+        }
+
 
         string GenerateString(int count)
         {

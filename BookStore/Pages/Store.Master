@@ -7,11 +7,8 @@
 <html>
 <head runat="server">
     <title>Книжный магазин</title>
-    <link href="/Content/styles.css" rel="stylesheet" />
-    <link href="../Content/products-styles.css" rel="stylesheet" />    
-    <link href="../Content/categs-styles.css" rel="stylesheet" />
-    <link href="../Content/cart-styles.css" rel="stylesheet" />
-    <link href="../Content/checkout-styles.css" rel="stylesheet" />
+    <%: System.Web.Optimization.Styles.Render("~/bundles/styles") %>
+    <%: System.Web.Optimization.Scripts.Render("~/bundles/validation") %>
 </head>
 <body>
     <form id="form1" runat="server">
